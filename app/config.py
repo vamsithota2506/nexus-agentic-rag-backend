@@ -37,9 +37,11 @@ class Settings(BaseSettings):
     MAX_REWRITE_ATTEMPTS: int = 2
     CONFIDENCE_HALLUCINATION_THRESHOLD: float = 0.70
 
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    model_config = {
+        "env_file": ".env",
+        "case_sensitive": True,
+        "extra": "ignore"
+    }
 
 
 settings = Settings()

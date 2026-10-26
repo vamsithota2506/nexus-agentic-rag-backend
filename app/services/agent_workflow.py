@@ -161,7 +161,8 @@ class AgenticRAGWorkflow:
             return 1.0
 
         overlap = len(answer_tokens.intersection(context_tokens))
-        return min(1.0, max(0.5, overlap / (len(answer_tokens) * 0.7)))
+        raw_score = overlap / len(answer_tokens)
+        return min(1.0, round(raw_score * 1.2, 3))
 
 
 agentic_rag_workflow = AgenticRAGWorkflow()
